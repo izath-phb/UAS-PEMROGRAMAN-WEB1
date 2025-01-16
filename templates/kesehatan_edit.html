@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Website Kesehatan | Edit</title>
+    <link rel="stylesheet" href="static/css/style_kesehatan.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='assets/logo.jpg') }}" alt="Logo Kesehatan">
+        <h1>Selamat Datang di Website Kesehatan</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    {% for item in data %}
+    <form action="{{ url_for('edit_kesehatan', id=item[0]) }}" method="post">
+        <label for="topik">Topik:</label>
+        <input type="text" id="topik" name="topik" required value="{{ item[1] }}">
+    
+        <label for="deskripsi">Deskripsi:</label>
+        <textarea id="deskripsi" name="deskripsi" required>{{ item[2] }}</textarea>
+    
+        <input type="submit" value="Simpan">
+    </form>
+    {% endfor %}
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>Hubungi kami di <a href="https://bpjs-kesehatan.go.id/">bpjs-kesehatan</a> untuk informasi lebih lanjut.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Website Kesehatan</p>
+    </footer>
+
+    <script src="static/js/kesehatan.js"></script>
+</body>
+
+</html>
